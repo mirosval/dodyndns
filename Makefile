@@ -5,7 +5,8 @@ docker:
 	docker build -t dodyndns .
 
 push:
-	docker push
+	docker tag dodyndns ${DOCKER_REPO}/dodyndns:latest
+	docker push ${DOCKER_REPO}/dodyndns:latest
 
 deploy:
 	envsubst < k8s.yaml | kubectl apply -f -

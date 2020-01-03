@@ -16,7 +16,7 @@ spec:
       containers:
       - name: application
         image: mirosval/dodyndns
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
           - containerPort: 8080
         env:
