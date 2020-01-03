@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dodyndns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: dodyndns
+  template:
+    metadata:
+      labels:
+        name: dodyndns
+    spec:
+      containers:
+      - name: application
+        image: mirosval/dodyndns
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8080
+        env:
+          - name: DO_ACCESS_TOKEN
+            value: "$DO_ACCESS_TOKEN"
+          - name: DO_DOMAIN_NAME
+            value: "$DO_DOMAIN_NAME"
+          - name: DO_DOMAIN_RECORD_ID
+            value: "$DO_DOMAIN_RECORD_ID"
+          - name: RUST_LOG
+            value: "dodyndns=trace"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dodyndns
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+    nodePort: 30001
+  selector:
+    name: dodyndns

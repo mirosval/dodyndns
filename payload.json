@@ -1,0 +1,4 @@
+{
+    "domain": "$DO_SUBDOMAIN",
+    "ip4": "$MY_IP"
+}
