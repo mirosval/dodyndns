@@ -21,7 +21,7 @@ curl -v -X PUT "https://api.digitalocean.com/v2/domains/example.com/records/3352
 
 However this approach requires an access token with write privileges, and as of this writing Digital Ocean does not support setting fine-grained privileges for access tokens. That means that anybody with your token can do anything in your DO account. 
 
-This project provides a simple proxy service that knows the DO access token and is able to update DNS records without exposing your entire DO account.
+This project provides a simple proxy service (that runs on your Digital Ocean (Kubernetes)) that knows the DO access token and is able to update DNS records without exposing your entire DO account.
 
 In order to secure the communication it is using JWT with pre-shared secret key to sign the payloads.
 
