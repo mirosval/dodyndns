@@ -77,5 +77,12 @@ make docker push deploy
 After this you can run the following using chron to update the IP address for your subdomain regularly:
 
 ```shell
+# Run directly
 ./updater.sh
+
+# OR add to chron:
+chrontab -e
+
+# Add line like this to run every hour
+0 * * * * DO_SUBDOMAIN="" SERVER="" JWT_SECRET="" /home/user/dodyndns/updater.sh
 ```
