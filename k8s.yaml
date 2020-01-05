@@ -24,8 +24,8 @@ spec:
             value: "$DO_ACCESS_TOKEN"
           - name: DO_DOMAIN_NAME
             value: "$DO_DOMAIN_NAME"
-          - name: DO_DOMAIN_RECORD_ID
-            value: "$DO_DOMAIN_RECORD_ID"
+          - name: JWT_SECRET
+            value: "$JWT_SECRET"
           - name: RUST_LOG
             value: "dodyndns=trace"
 ---

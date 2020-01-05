@@ -13,7 +13,7 @@ FROM debian:buster-slim
 
 EXPOSE 8080
 
-RUN apt-get update && apt-get -y install openssl
+RUN apt-get update && apt-get -y install openssl ca-certificates
 COPY --from=builder /usr/local/cargo/bin/dodyndns .
 
 ENTRYPOINT ["./dodyndns"]

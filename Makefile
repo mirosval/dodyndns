@@ -15,7 +15,7 @@ run:
 	RUST_LOG=dodyndns=trace cargo watch -c -x 'run'
 
 run-update:
-	MY_IP=$(shell curl https://ipv4bot.whatismyipaddress.com) envsubst < payload.json | curl -v -X POST -d @- ${SERVER}/update
+	./updater.sh
 
 list-subdomains:
 	curl --header "Authorization: Bearer ${DO_ACCESS_TOKEN}" https://api.digitalocean.com/v2/domains/${DO_DOMAIN_NAME}/records | jq .
