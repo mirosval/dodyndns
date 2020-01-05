@@ -18,8 +18,7 @@ payload="{\"domain\":\"$DO_SUBDOMAIN\",\"ip4\":\"$ip\"}"
 
 header=$(echo -n $header | base64url)
 payload=$(echo -n $payload | base64url)
-hashed=$(echo -n "$header.$payload" | openssl dgst -sha512 -hmac "$JWT_SECRET" -binary)
-signature=$(echo -n $hashed | base64url)
+signature=$(echo -n "$header.$payload" | openssl dgst -sha512 -hmac "$JWT_SECRET" -binary | base64url)
 signed=$(echo -n "$header.$payload.$signature")
 
 echo -n $signed | curl -d @- ${SERVER}/update
