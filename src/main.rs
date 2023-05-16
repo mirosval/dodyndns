@@ -1,4 +1,3 @@
-use bytes::buf::BufExt;
 use bytes::Buf;
 use hyper::service::{make_service_fn, service_fn};
 use hyper::{Body, Client, Method, Request, Response, Server, StatusCode};
@@ -202,7 +201,8 @@ async fn handle(client: HttpClient, req: Request<Body>) -> Result<Response<Body>
             let res = match client.request(req).await {
                 Ok(res) => {
                     let status = res.status();
-                    let res_body = hyper::body::aggregate(res).await?.to_bytes();
+                    let mut buf = hyper::body::aggregate(res).await?;
+                    let res_body = buf.copy_to_bytes(buf.remaining());
                     trace!("Received response from DO: {}", &status);
                     match status {
                         StatusCode::OK => {

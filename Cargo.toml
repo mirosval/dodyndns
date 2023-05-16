@@ -2,18 +2,18 @@
 name = "dodyndns"
 version = "0.1.0"
 authors = ["Miroslav Zoricak <miroslav.zoricak@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-hyper = "0.13"
-tokio = { version = "0.2", features = ["full"] }
+hyper = { version = "0.14", features = ["full"] }
+tokio = { version = "1", features = ["full"] }
 futures = "0.3"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-bytes = "0.5"
-hyper-tls = "0.4.0"
+bytes = "1.4"
+hyper-tls = "0.5.0"
 log = "0.4"
-pretty_env_logger = "0.3.1"
-biscuit = "0.4.1"
+pretty_env_logger = "0.4"
+biscuit = "0.6.0"

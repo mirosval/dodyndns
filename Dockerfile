@@ -1,4 +1,4 @@
-FROM rust:1-buster as builder
+FROM rust:1-bookworm as builder
 
 WORKDIR /app
 RUN USER=root cargo new dodyndns
@@ -9,7 +9,7 @@ RUN cargo build --release && rm target/release/deps/dodyndns*
 COPY src ./src
 RUN cargo install --locked --path .
 
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 
 EXPOSE 8080
 
